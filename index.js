@@ -1,6 +1,6 @@
-const { prompt } = require('inquirer');
-const inq = require('inquirer');
+const inquirer = require('inquirer');
 const generateMarkdown = require('./utils/generateMarkdown.js');
+const fs = require('fs');
 
 const questions = [
     // Project Title
@@ -136,7 +136,7 @@ const questions = [
 //         linkData = [];
 //     }
 
-//     return inq
+//     return inquirer
 //         .prompt(
 //             [
 //                 {
@@ -183,19 +183,36 @@ const questions = [
 // }
 
 // TODO: Create a function to write README file
-function writeToFile(fileName, data) { }
+function writeToFile(data) {
+    return new Promise((resolve, reject) => {
+        fs.writeFile('./dist/README.MD', data, (err) => {
+            if (err) {
+                reject(err);
+                return;
+            }
+
+            resolve({
+                ok: true,
+                message: 'File created!'
+            })
+        })
+    })
+}
 
 // TODO: Create a function to initialize app
 function init() {
-    // ask
-    inq
+    inquirer
         .prompt(questions)
         .then(response => {
             return generateMarkdown(response)
         })
-        .then()
-    // markdown = generatemarkdown(responses)
-    // writetofile(fileName, data)
+        .then(response => {
+            console.log(response);
+            return writeToFile(response);
+        })
+        .then(response => {
+            console.log(response);
+        })
 }
 
 // Function call to initialize app
