@@ -84,7 +84,7 @@ const questions = [
     // Contributors
     {
         type: 'input',
-        name: 'Contributors',
+        name: 'contributors',
         message: 'List of Contributors',
         validate: contributorInput => {
             if (contributorInput) {
@@ -191,8 +191,9 @@ function init() {
     inq
         .prompt(questions)
         .then(response => {
-            console.log(response);
+            return generateMarkdown(response)
         })
+        .then()
     // markdown = generatemarkdown(responses)
     // writetofile(fileName, data)
 }
