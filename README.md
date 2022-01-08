@@ -13,3 +13,5 @@
 - Contributing
 - Tests
 - Questions / link to github / email
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-g.svg)](https://opensource.org/licenses/MIT)
