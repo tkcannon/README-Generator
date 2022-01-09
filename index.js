@@ -1,6 +1,7 @@
 const inquirer = require('inquirer');
 const generateMarkdown = require('./utils/generateMarkdown.js');
 const fs = require('fs');
+const { prompt } = require('inquirer');
 
 const questions = [
     // Project Title
@@ -81,16 +82,16 @@ const questions = [
         ],
         default: 'MIT License'
     },
-    // Contributors
+    // Contribution Guidelines
     {
         type: 'input',
-        name: 'contributors',
-        message: 'List of Contributors',
-        validate: contributorInput => {
-            if (contributorInput) {
+        name: 'contributing',
+        message: 'Contribution Guidelines',
+        validate: contributionInput => {
+            if (contributionInput) {
                 return true;
             } else {
-                console.log('Please enter a list of Contributors.');
+                console.log("Please enter Contribution Guidelines");
                 return false;
             }
         }
@@ -110,79 +111,36 @@ const questions = [
         }
     },
     // Contact Info
+    // Github
     {
         type: 'input',
-        name: 'questions',
-        message: 'Contact info for questions about project',
-        validate: questionsInput => {
-            if (questionsInput) {
+        name: 'github',
+        message: 'github Username',
+        validate: githubInput => {
+            if (githubInput) {
                 return true;
             } else {
-                console.log('Please enter Contact info for questions about the project')
+                console.log('Please enter your github username')
+                return false;
+            }
+        }
+    },
+    // Email
+    {
+        type: 'input',
+        name: 'email',
+        message: 'Email Address',
+        validate: emailInput => {
+            if (emailInput) {
+                return true;
+            } else {
+                console.log('Please enter your email')
+                return false;
             }
         }
     }
 ];
 
-
-// const addContributor = contributorData => {
-//     if (!contributorData) {
-//         contributorData = [];
-//     }
-// }
-
-// const addLink = linkData => {
-//     if (!linkData) {
-//         linkData = [];
-//     }
-
-//     return inquirer
-//         .prompt(
-//             [
-//                 {
-//                     type: 'input',
-//                     message: 'Link type ex:(email, github, webpage)',
-//                     validate: linkTypeInput => {
-//                         if (linkTypeInput) {
-//                             return true;
-//                         } else {
-//                             console.log('Please input A type for the link')
-//                             return false;
-//                         }
-//                     }
-//                 },
-//                 {
-//                     type: 'input',
-//                     message: 'Add link',
-//                     validate: linkInput => {
-//                         if (linkInput) {
-//                             return true;
-//                         } else {
-//                             console.log('Please enter a link')
-//                             return false;
-//                         }
-//                     }
-//                 },
-//                 {
-//                     type: 'confirm',
-//                     name: 'addLink',
-//                     message: 'Would you like to add another link?',
-//                     default: false,
-//                 }
-//             ]
-//         )
-//         .then(link => {
-//             linkData.push(link)
-//             console.log(linkData);
-//             if (link.addLink) {
-//                 return addLink(linkData);
-//             } else {
-//                 return linkData;
-//             }
-//         })
-// }
-
-// TODO: Create a function to write README file
 function writeToFile(data) {
     return new Promise((resolve, reject) => {
         fs.writeFile('./dist/README.MD', data, (err) => {
@@ -208,11 +166,11 @@ function init() {
         })
         .then(response => {
             console.log(response);
-            return writeToFile(response);
+            // return writeToFile(response);
         })
-        .then(response => {
-            console.log(response);
-        })
+    // .then(response => {
+    //     console.log(response);
+    //        })
 }
 
 // Function call to initialize app
