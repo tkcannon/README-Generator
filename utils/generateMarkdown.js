@@ -34,6 +34,13 @@ function renderLicenseBadge(license) {
   return badge;
 }
 
+function renderLicenseNav(license) {
+  if (!license) {
+    return '';
+  }
+  return ('- [License](#license');
+}
+
 // TODO: Create a function that returns the license link
 // If there is no license, return an empty string
 function renderLicenseLink(license) {
@@ -78,7 +85,7 @@ function renderLicenseSection(license) {
   }
   return `
   ## License
-  ${renderLicenseLink(license)}
+  This application is available under ${renderLicenseLink(license)}
   `
 }
 
@@ -91,8 +98,10 @@ function generateMarkdown(data) {
   ## Table Of Contents
   - [Installation](#installation)
   - [Usage](#usage)
-  - [Lincense](#license)
-  - [Contributing](#contributors)
+  ${renderLicenseNav(data.license)}
+  - [Contributing](#contributing)
+  - [Tests](#tests)
+  - [Questions](#questions)
   ## Installation
   ${data.install}
   ## Usage
@@ -100,10 +109,10 @@ function generateMarkdown(data) {
   ${renderLicenseSection(data.license)}
   ## Contributing
   ${data.contributing}
-  ## Testing
+  ## Tests
   ${data.tests}
   ## Questions
-  Github:  [${data.github}](https://github.com/${data.github})
+  Github:  [${data.github}](https://github.com/${data.github}) /n
   For questions email ${data.email}
 `;
 }

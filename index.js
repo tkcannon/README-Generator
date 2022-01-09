@@ -66,6 +66,7 @@ const questions = [
         name: 'license',
         message: 'Select a License',
         choices: [
+            '',
             'Apache License 2.0',
             'GNU General Public License v3.0',
             'GNU Lesser General Public License v3.0',
@@ -75,7 +76,7 @@ const questions = [
             'Mozilla Public License 2.0',
             'The Unlicense'
         ],
-        default: 'MIT License'
+        default: ''
     },
     // Contribution Guidelines
     {
@@ -138,7 +139,7 @@ const questions = [
 
 function writeToFile(data) {
     return new Promise((resolve, reject) => {
-        fs.writeFile('./dist/README.MD', data, (err) => {
+        fs.writeFile('./dist/README.md', data, (err) => {
             if (err) {
                 reject(err);
                 return;
@@ -160,7 +161,6 @@ function init() {
             return generateMarkdown(response)
         })
         .then(response => {
-            console.log(response);
             return writeToFile(response);
         })
         .then(response => {
