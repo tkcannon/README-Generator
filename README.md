@@ -14,4 +14,5 @@
 - Tests
 - Questions / link to github / email
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-g.svg)](https://opensource.org/licenses/MIT)
+[![License](https://img.shields.io/badge/License-MIT-g)](https://opensource.org/licenses/MIT)
+[MIT License](https://choosealicense.com/licenses/apache-2.0/)
