@@ -14,7 +14,7 @@
   ## Usage
   To use: run node index.js and answer a series of prompts. The responses given will then be used to generate the README file. To forgo adding a license to the project, select the empty line option when prompted.
 
-  [Example](https://github.com/tkcannon/README-Generator/blob/main/assets/README_GENERATOR_example.mp4)
+  [Example](https://youtu.be/LExISSyX9Ok)
 
   ## License
   This application is available under [MIT License](https://choosealicense.com/licenses/mit/)
