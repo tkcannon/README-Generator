@@ -95,8 +95,7 @@ function generateMarkdown(data) {
   ${data.description}
   ## Table Of Contents
   - [Installation](#installation)
-  - [Usage](#usage) 
-  ${renderLicenseNav(data.license)}
+  - [Usage](#usage)\n  ${renderLicenseNav(data.license)}
   - [Contributing](#contributing)
   - [Tests](#tests)
   - [Questions](#questions)
