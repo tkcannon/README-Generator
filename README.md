@@ -5,7 +5,6 @@
   ## Table Of Contents
   - [Installation](#installation)
   - [Usage](#usage) 
-  
   - [Contributing](#contributing)
   - [Tests](#tests)
   - [Questions](#questions)
